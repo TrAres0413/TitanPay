@@ -22,4 +22,4 @@ class Employee:
         self.__weekly_dues = dues
 
     def get_full_name(self):
-        print("Employee: " + self.__last + ", " + self.__first)
+        print("Employee: " + self.__last_name + ", " + self.__first_name)

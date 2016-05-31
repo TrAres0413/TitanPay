@@ -26,6 +26,6 @@ class SalariedEmployee:
     def set_dues(self, dues):
             self.__weekly_dues = dues
 
-    def get_full_name(self, last, first):
-            print("Employee: " + last + ", " + first)
+    def get_full_name(self):
+            print("Employee: " + self.__last + ", " + self.__first)
 

@@ -5,17 +5,6 @@ class Address:
         self.__state = state
         self.__zip = zip_code
 
-    def set_street_address(self, street):
-        self.__street_address = street
-
-    def set_city(self, city):
-        self.__city = city
-
-    def set_state(self, state):
-        self.__state = state
-
-    def set_zip(self, zip_code):
-        self.__zip = zip_code
-
-    def get_address(self, street, city, state, zip_code):
-        print("Employee Address: " + street + city + ", " + state + ". " + zip_code)
+    def get_address(self):
+        stmt_str = "Employee Address: Street- {0}, City- {1}, State- {2}, Zip- {3}"
+        print(stmt_str.format(self.__street_address, self.__city, self.__state, self.__zip))

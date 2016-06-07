@@ -15,5 +15,10 @@ class HourlyEmployee(Employee):
         TimeCard.set_date()
 
     def clock_out(self):
+        TimeCard.set_end_time()
+
+    def pay(self):
+        TimeCard.calculate_daily_pay()
+
         
 

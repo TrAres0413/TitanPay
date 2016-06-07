@@ -1,4 +1,3 @@
-from src.accounting.payment_method import PaymentMethod
 from src.accounting.bank_account import BankAccount
 
 

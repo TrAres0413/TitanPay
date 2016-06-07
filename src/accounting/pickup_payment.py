@@ -1,6 +1,5 @@
-from src.accounting.payment_method import PaymentMethod
-from src.accounting.employee import Employee
 from src.accounting.time_card import TimeCard
+from src.accounting.employee import Employee
 
 
 class PickupPayment:

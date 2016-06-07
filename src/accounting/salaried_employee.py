@@ -1,4 +1,5 @@
 from src.accounting.employee import Employee
+from src.accounting.receipt import Receipt
 
 
 class SalariedEmployee(Employee):
@@ -7,6 +8,10 @@ class SalariedEmployee(Employee):
         self.__salary = salary
         self.__commission_rate = comm
         self.__weekly_receipt = []
+
+    def make_sale(self):
+        Receipt.get_receipt()
+        self.__weekly_receipt.append()
 
     def calc_commission(self):
         commission = self.__commission_rate * self.__weekly_receipt

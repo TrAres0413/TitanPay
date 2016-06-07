@@ -6,7 +6,13 @@ class SalariedEmployee(Employee):
         Employee.__init__(first_name, last_name, employee_id, dues)
         self.__salary = salary
         self.__commission_rate = comm
+        self.__weekly_receipt = []
 
-    sales_receipts = []
+    def calc_commission(self):
+        commission = self.__commission_rate * self.__weekly_receipt
+        return commission
+
+
+
 
 

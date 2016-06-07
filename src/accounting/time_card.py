@@ -1,15 +1,14 @@
-from _datetime import date, time
+from datetime import datetime
 
 
 class TimeCard:
-    def __init__(self, date, start, end):
+    def __init__(self, start, end):
         self.__date = datetime.date
         self.__start_time = start
         self.__end_time = end
 
     def set_date(self):
-        self.__date = _datetime.date
-
+        self.__date = datetime.date
 
     def set_start_time(self, start):
         self.__start_time = start

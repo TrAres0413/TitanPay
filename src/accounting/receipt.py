@@ -13,6 +13,6 @@ class Receipt:
     def set_sale_amt(self, amt):
         self.__sale_amt = amt
 
-    def get_reciept(self, invoice):
+    def get_receipt(self, invoice):
         stmt_str = "Invoice Number: {0}, Date: {1}, Amount: {2}"
         print(stmt_str.format(self.__invoice, self.__date, self.__sale_amt))

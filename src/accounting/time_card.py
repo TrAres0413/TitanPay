@@ -21,7 +21,8 @@ class TimeCard:
 
         if hours <= 8:
             daily_pay = hours * rate
+            return daily_pay
+
         if hours > 8:
             daily_pay = (rate * 8) + (1.5*rate * (hours - 8))
-
-        return daily_pay
+            return daily_pay

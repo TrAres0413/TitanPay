@@ -1,22 +1,15 @@
+import datetime
 
 
 class TimeCard:
-    def __init__(self, start, end, date):
-        self.__date = date
-        self.__start_time = start
-        self.__end_time = end
-
-    def set_date(self, date):
+    def __init__(self, date):
         self.__date = date
 
-    def get_date(self):
-        return self.__date
+    def clock_in(self):
+        self.__start_time = datetime.datetime.now().today()
 
-    def set_start_time(self, start):
-        self.__start_time = start
-
-    def set_end_time(self, end):
-        self.__end_time = end
+    def clock_out(self):
+        self.__end_time = datetime.datetime.now().today()
 
     def calculate_daily_pay(self, rate):
         hours = self.__end_time - self.__start_time

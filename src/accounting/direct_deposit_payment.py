@@ -1,10 +1,10 @@
-from src.accounting.bank_account import BankAccount
+from src.accounting.payment_method import PaymentMethod
 
 
-class DirectDepositStatement:
-    def __init__(self, amt):
-        self.__amt = amt
+class DirectDeposit(PaymentMethod):
+    def __init__(self, employee_id, bank_acct):
+        PaymentMethod.__init__(employee_id)
+        self.__bank = bank_acct
 
-    def make_deposit(self):
-        return BankAccount.deposit()
-
+    def pay(self, amt):
+        self.__bank.deposit()

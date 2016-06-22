@@ -1,10 +1,10 @@
-from src.accounting.time_card import TimeCard
 from src.accounting.employee import Employee
 from src.accounting.address import Address
+from src.accounting.payment_method import PaymentMethod
 
 
-class MailPayment:
-    def __init__(self):
-        amt = TimeCard.calculate_daily_pay()
+class MailPayment(PaymentMethod):
+    def __init__(self, employee_id, amt):
+        self.__employee = employee_id
         address = Address.get_address()
         print("Mailing a check to " + Employee.get_full_name() + "for $" + amt + "to " + address + ".")

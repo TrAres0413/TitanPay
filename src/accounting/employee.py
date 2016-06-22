@@ -1,3 +1,5 @@
+
+
 class Employee:
     def __init__(self, employee_id, first, last, dues, pay_method):
         self.__employee_id = employee_id
@@ -23,3 +25,6 @@ class Employee:
 
     def get_full_name(self):
         print("Employee: " + self.__last_name + ", " + self.__first_name)
+
+    def get_payment_method(self):
+        return self.__pay_method

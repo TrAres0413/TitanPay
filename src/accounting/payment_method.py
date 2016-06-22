@@ -8,7 +8,7 @@ from src.accounting.time_card import TimeCard
 class PaymentMethod:
     def __init__(self, employee_id):
         self.__employee = employee_id
-        self.__amt = TimeCard.calculate_daily_pay()
+        self.__amt = TimeCard.calculate_daily_pay() #I hope I put this in the right place
 
     def pay(self, amt):
         if Employee.get_payment_method() == "Pick Up":

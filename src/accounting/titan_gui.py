@@ -10,7 +10,8 @@ class TitanGUI:
         tkinter.mainloop()
 
     def commit_payroll(self):
-        self.__button = tkinter.Button(self.__first_window, text='Commit Payroll', command=self.finish_payroll)
+        self.__second_window = tkinter.Tk()
+        self.__button = tkinter.Button(self.__second_window, text='Commit Payroll', command=self.finish_payroll)
         self.__button.pack()
         tkinter.mainloop()
 

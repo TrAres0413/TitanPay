@@ -6,5 +6,6 @@ class BankAccount:
 
     def deposit(self, amt):
         stmt_str = "Depositing ${0} in Account: {1}, via Routing: {2}"
-        print(stmt_str.format(amt, self.__account_id, self.__routing_number))
+        return stmt_str.format(amt, self.__account_id, self.__routing_number)
+
 

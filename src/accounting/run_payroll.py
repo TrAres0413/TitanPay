@@ -1,14 +1,11 @@
-import csv
+
 
 from src.accounting.employee import Employee
 from src.accounting.payment_method import PaymentMethod
-from src.accounting.receipt import Receipt
-
-
-employee_dict = {}
 
 
 class RunPayroll:
+    employee_dict = {}
     with open('hourly_employees.csv', 'r') as hourly_file:
         for line in hourly_file:
             employee_id, last, first, rate, dues, pay_meth = line.split(',')
@@ -39,6 +36,7 @@ class RunPayroll:
 """
 with open('hourly_employees.csv', 'r') as hourly_file:
     read_hourly = csv.reader(hourly_file, delimiter=",")
+
 
     employee_id = []
     last_name = []

@@ -1,6 +1,8 @@
 import tkinter
 import tkinter.messagebox
 
+'''from src.accounting.run_payroll import RunPayroll'''
+
 
 class TitanGUI:
     def __init__(self):
@@ -16,6 +18,8 @@ class TitanGUI:
 
     def finish_payroll(self):
         tkinter.messagebox.showinfo('Processing Payroll')
+        '''run_payroll = RunPayroll()
+        return run_payroll'''
 
 
 titan_gui = TitanGUI()

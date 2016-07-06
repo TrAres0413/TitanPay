@@ -1,37 +1,40 @@
+import sqlite3
+import csv
+
+conn = sqlite3.connect('titan.db')
+curs = conn.cursor()
 
 
-from src.accounting.employee import Employee
-from src.accounting.payment_method import PaymentMethod
+def create_table():
+    curs.execute('DROP TABLE IF EXISTS hourly_employee')
+    curs.execute('DROP TABLE IF EXISTS salary_employee')
+    curs.execute('DROP TABLE IF EXISTS time_cards')
+    curs.execute('DROP TABLE IF EXISTS receipts')
+    curs.execute('CREATE TABLE IF NOT EXISTS hourly_employee(employee_id INT PRIMARY KEY, last TEXT NOT NULL, first TEXT NOT NULL, dues REAL, pay_method TEXT, hourly_rate REAL')
+    curs.execute('CREATE TABLE IF NOT EXISTS time_cards(date TEXT PRIMARY KEY, time_in REAL, time_out REAL)')
+    curs.execute('CREATE TABLE IF NOT EXISTS salary_employees(employee_id INT PRIMARY KEY, last TEXT NOT NULL,'
+                 ' first TEXT NOT NULL, dues REAL, pay_method TEXT, salary INT, comm REAL)')
+    curs.execute('CREATE TABLE IF NOT EXISTS receipts(date TEXT PRIMARY KEY, amt REAL)')
 
 
-class RunPayroll:
-    employee_dict = {}
+def data_entry():
     with open('hourly_employees.csv', 'r') as hourly_file:
-        for line in hourly_file:
-            employee_id, last, first, rate, dues, pay_meth = line.split(',')
-
-            emp = Employee(employee_id, last, first, rate, pay_meth)
-            employee_dict.update(eval(hourly_file, emp))
-
+        reader = csv.DictReader(hourly_file)
+        for row in reader:
+            if row != '':
+                curs.execute('INSERT INTO hourly_employee() VALUES (?, ?, ?, ?, ?, ?)')
     with open('salaried_employees.csv', 'r') as salary_file:
-        for line in salary_file:
-            employee_id, last, first, salary, commission, dues, pay_meth = line.split(',')
-
-            emp = Employee(employee_id, last, first, salary, commission, dues, pay_meth)
-            employee_dict.update(eval(salary_file, emp))
-
+        reader = csv.DictReader(salary_file)
+        for row in reader:
+            curs.execute('INSERT INTO salary_employee() VALUES (?, ?, ?, ?, ?, ?, ?)')
     with open('timecards.csv', 'r') as time_file:
-        for line in time_file:
-            if employee_id == employee_dict.employee_id:
-                employee_dict.update(employee_id)
-
+        reader = csv.DictReader(time_file)
+        for row in reader:
+            curs.execute('INSERT INTO time_cards(date, time_in, time_out) VALUES (?, ?, ?)')
     with open('receipts.csv', 'r') as receipt_file:
-        for line in receipt_file:
-            if employee_dict.employee_id == employee_id:
-                employee_dict.update(employee_id)
-
-    for emp in employee_dict:
-        PaymentMethod(emp)
+        reader = csv.DictReader(receipt_file)
+        for row in reader:
+            curs.execute('INSERT INTO receipts(date, amt) VALUES (?, ?)')
 
 """
 with open('hourly_employees.csv', 'r') as hourly_file:

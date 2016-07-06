@@ -10,6 +10,9 @@ class HourlyEmployee(Employee):
         self.__hourly_rate = rate
         self.__weekly_time_cards = []
 
+    def get_hourly_rate(self):
+        return self.__hourly_rate
+
     def clock_in(self):
         today = datetime.date.today()
         time_card = TimeCard(today)
@@ -17,17 +20,15 @@ class HourlyEmployee(Employee):
         self.__weekly_time_cards.append(time_card)
 
     def clock_out(self):
-        today = datetime.date.today()
-        time_card = TimeCard(today)
-        time_card.clock_out()
         for x in self.__weekly_time_cards:
-            if x.clock_in() == datetime.date.today():
+            if x.get_date() == datetime.date.today():
                 x.clock_out()
 
-    def pay(self):
+    def pay(self, start_date, end_date):
         total_pay = 0
         for x in self.__weekly_time_cards:
-            total_pay += x.calculate_daily_pay(self.__hourly_rate)
+            if x.get_date() >= start_date <= end_date:
+                total_pay += x.calculate_daily_pay(self.__hourly_rate)
 
         self.get_payment_method().pay(total_pay)
 

@@ -8,6 +8,9 @@ class TimeCard:
     def clock_in(self):
         self.__start_time = datetime.datetime.now().today()
 
+    def get_date(self):
+        return self.__start_time
+
     def clock_out(self):
         self.__end_time = datetime.datetime.now().today()
 
@@ -19,5 +22,5 @@ class TimeCard:
             return daily_pay
 
         if hours > 8:
-            daily_pay = (rate * 8) + (1.5*rate * (hours - 8))
+            daily_pay = (rate * 8) + (1.5 * rate * (hours - 8))
             return daily_pay

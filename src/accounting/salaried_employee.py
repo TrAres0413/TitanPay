@@ -1,6 +1,5 @@
 from src.accounting.employee import Employee
 from src.accounting.receipt import Receipt
-from src.accounting.payment_method import PaymentMethod
 import datetime
 
 
@@ -11,10 +10,16 @@ class SalariedEmployee(Employee):
         self.__commission_rate = comm
         self.__weekly_receipt = []
 
-    def make_sale(self):
-        receipt = Receipt()
-        receipt.set_invoice()
-        receipt.set_sale_amt()
+    def get_salary(self):
+        return self.__salary
+
+    def get_commission(self):
+        return self.__commission_rate
+
+    def make_sale(self, sale_amt):
+        date = datetime.date.today()
+        amt = sale_amt
+        receipt = Receipt(date, amt)
         self.__weekly_receipt.append(receipt)
 
     def calc_commission(self):

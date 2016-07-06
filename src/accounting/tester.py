@@ -2,7 +2,7 @@ import sqlite3
 import csv
 
 
-conn = sqlite3.connect('tester.db')
+conn = sqlite3.connect('.db')
 c = conn.cursor()
 
 
@@ -16,16 +16,15 @@ def data_entry():
         hourly_emp = csv.reader(hourly_file, delimiter=',')
         next(hourly_emp)
         for row in hourly_emp:
-            while row != "":
-                emp = row
-                employee_id = emp[0]
-                last = emp[1]
-                first = emp[2]
-                hourly_rate = emp[3]
-                dues = emp[4]
-                pay_method = emp[5]
-                c.execute('INSERT INTO hourly_employee VALUES (?, ?, ?, ?, ?, ?)',
-                             (employee_id, last, first, hourly_rate, dues, pay_method))
+            emp = row
+            employee_id = emp[0]
+            last = emp[1]
+            first = emp[2]
+            hourly_rate = emp[3]
+            dues = emp[4]
+            pay_method = emp[5]
+            c.execute('INSERT INTO hourly_employee VALUES (?, ?, ?, ?, ?, ?)',
+                    (employee_id, last, first, hourly_rate, dues, pay_method))
 
 create_table()
 data_entry()

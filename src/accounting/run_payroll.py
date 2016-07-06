@@ -5,6 +5,13 @@ conn = sqlite3.connect('titan_pay.db')
 curs = conn.cursor()
 
 
+def clear_table():
+    curs.execute('DROP TABLE IF EXISTS hourly_employee')
+    curs.execute('DROP TABLE IF EXISTS time_cards')
+    curs.execute('DROP TABLE IF EXISTS salary_employee')
+    curs.execute('DROP TABLE IF EXISTS receipts')
+
+
 def create_table():
     curs.execute('CREATE TABLE IF NOT EXISTS hourly_employee(employee_id INT PRIMARY KEY, last TEXT NOT NULL, first TEXT NOT NULL, hourly REAL, dues TEXT, pay_method REAL)')
     curs.execute('CREATE TABLE IF NOT EXISTS time_cards(employee_id INT, time_in REAL, time_out REAL, date TEXT)')
@@ -60,6 +67,7 @@ def data_entry():
 
 
 def run_payroll():
+    clear_table()
     create_table()
     data_entry()
     conn.commit()

@@ -1,5 +1,4 @@
-EmployeeId,LastName,Item,Units,Unit Cost,Total
-1,Jones,Pencil,95, 1.99 , 189.05 
+1,Jones,Pencil,95, 1.99 , 189.05
 2,Kivell,Binder,50, 19.99 , 999.50 
 3,Jardine,Pencil,36, 4.99 , 179.64 
 4,Gill,Pen,27, 19.99 , 539.73 

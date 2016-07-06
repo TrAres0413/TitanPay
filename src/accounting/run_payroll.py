@@ -6,10 +6,6 @@ curs = conn.cursor()
 
 
 def create_table():
-    curs.execute('DROP TABLE IF EXISTS hourly_employee')
-    curs.execute('DROP TABLE IF EXISTS salary_employee')
-    curs.execute('DROP TABLE IF EXISTS time_cards')
-    curs.execute('DROP TABLE IF EXISTS receipts')
     curs.execute('CREATE TABLE IF NOT EXISTS hourly_employee(employee_id INT PRIMARY KEY, last TEXT NOT NULL, first TEXT NOT NULL, dues REAL, pay_method TEXT, hourly_rate REAL')
     curs.execute('CREATE TABLE IF NOT EXISTS time_cards(date TEXT PRIMARY KEY, time_in REAL, time_out REAL)')
     curs.execute('CREATE TABLE IF NOT EXISTS salary_employees(employee_id INT PRIMARY KEY, last TEXT NOT NULL,'

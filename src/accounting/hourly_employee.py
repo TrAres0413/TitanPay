@@ -5,18 +5,20 @@ import datetime
 
 class HourlyEmployee(Employee):
 
-    def __init__(self, first_name, last_name, employee_id, rate, dues, payment_method):
-        Employee.__init__(first_name, last_name, employee_id, dues, payment_method)
+    def __init__(self,employee_id, first_name, last_name, rate, dues, payment_method):
+        Employee.__init__(employee_id, first_name, last_name, dues, payment_method)
         self.__hourly_rate = rate
         self.__weekly_time_cards = []
 
     def get_hourly_rate(self):
         return self.__hourly_rate
 
+    def get_time_card(self):
+        return len(self.__weekly_time_cards)
+
     def clock_in(self):
         today = datetime.date.today()
         time_card = TimeCard(today)
-        time_card.clock_in()
         self.__weekly_time_cards.append(time_card)
 
     def clock_out(self):

@@ -1,28 +1,32 @@
 import tkinter
 import tkinter.messagebox
-
-from src.accounting.run_payroll import run_payroll
+from src.accounting.run_payroll import RunPayroll
 
 
 class TitanGUI:
     def __init__(self):
-        self.__first_window = tkinter.Tk()
-        self.__button = tkinter.Button(self.__first_window, text='Process Payroll', fg="green", command=self.commit_payroll)
-        self.__button.pack(side=tkinter.BOTTOM)
-        self.__button = tkinter.Button(self.__first_window, text='Import Employees', fg="blue",
-                                       command=run_payroll())
-        self.__button.pack(side=tkinter.TOP)
+        RunPayroll.prepare_tables()
+        self.__main_window = tkinter.Tk()
+        self.__frame = tkinter.Frame(self.__main_window)
+        self.__label = tkinter.Label(self.__frame, text='Titan Pay')
+        self.__create_emp_button = tkinter.Button(self.__frame, bg='green', text='New Hire')
+        self.__import_emp = tkinter.Button(bg='green', text='Import Employees',
+                                           command=RunPayroll.import_employees)
+        self.__import_time = tkinter.Button(bg='green', text='Import Time Cards',
+                                            command=RunPayroll.import_time)
+        self.__import_receipts = tkinter.Button(bg='green', text='Import Receipts',
+                                                command=RunPayroll.import_receipts)
+        self.__process_payroll = tkinter.Button(bg='green', text='Process Payroll')
+
+        self.__frame.pack()
+        self.__label.pack()
+        self.__create_emp_button.pack()
+        self.__import_emp.pack()
+        self.__import_receipts.pack()
+        self.__import_time.pack()
+        self.__process_payroll.pack()
+
         tkinter.mainloop()
-
-    def commit_payroll(self):
-        self.__second_window = tkinter.Tk()
-        self.__button = tkinter.Button(self.__second_window, text='Commit Payroll', fg="red", command=self.finish_payroll)
-        self.__button.pack()
-
-    def finish_payroll(self):
-        tkinter.messagebox.showinfo('Processing Payroll')
 
 
 titan_gui = TitanGUI()
-
-

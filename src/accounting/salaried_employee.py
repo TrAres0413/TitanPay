@@ -4,10 +4,11 @@ import datetime
 
 
 class SalariedEmployee(Employee):
-    def __init__(self, first_name, last_name, employee_id, dues, salary, comm, payment_method):
-        Employee.__init__(first_name, last_name, employee_id, dues, payment_method)
+    def __init__(self,employee_id, first_name, last_name, dues, salary, comm, payment_method):
+        Employee.__init__(employee_id, first_name, last_name, dues, payment_method)
         self.__salary = salary
         self.__commission_rate = comm
+        self.__total_pay = 0
         self.__weekly_receipt = []
 
     def get_salary(self):
@@ -22,16 +23,21 @@ class SalariedEmployee(Employee):
         receipt = Receipt(date, amt)
         self.__weekly_receipt.append(receipt)
 
+    def get_sales(self):
+        return self.__weekly_receipt
+
     def calc_commission(self):
         commission = self.__commission_rate * self.__weekly_receipt
         return commission
 
     def pay(self):
-        total_pay = 0
         for x in self.__weekly_receipt:
-            total_pay += self.__salary + self.calc_commission()
+            self.__total_pay += self.__salary + self.calc_commission()
+            self.get_payment_method().pay(self.__total_pay)
 
-        self.get_payment_method().pay(total_pay)
+    def get_total_pay(self):
+        return self.__total_pay
+
 
 
 

@@ -36,7 +36,7 @@ class Employee:
         self.__pay_method = pay_method
 
     def get_full_name(self):
-        print("Employee: " + self.__last_name + ", " + self.__first_name)
+        return "Employee: " + self.__last_name + ", " + self.__first_name
 
     def get_payment_method(self):
         return self.__pay_method
